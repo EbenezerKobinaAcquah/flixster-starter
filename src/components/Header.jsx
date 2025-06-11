@@ -9,7 +9,7 @@ export default function Header({ setSearchQuery, searchQuery, searchMoviesFromAP
 
     return (
         <>
-            <header>
+            <header className="headerContainer">
                 <h1>Flixster</h1>
                 <div className="searchSort">
                     <div>
@@ -18,10 +18,11 @@ export default function Header({ setSearchQuery, searchQuery, searchMoviesFromAP
                             value={searchQuery}
                             onChange={(e) => handleSearchChange(e)}
                             placeholder="Search"
+                            className="searchBox"
                         />
-                        <button onClick={handleSearchButton}>Search</button>
+                        <button className="searchButton" onClick={handleSearchButton}>Search</button>
                     </div>
-                    <select>
+                    <select className="sort">
                         <option value="1">Sort by</option>
                         <option value="1">Name</option>
                         <option value="1">Vote</option>

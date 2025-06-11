@@ -11,7 +11,7 @@ export default function MovieList({
 }) {
   const loadMore = () => {
     setPage(prev => prev + 1);
-    
+
   };
 
   // Style for the active button
@@ -33,11 +33,13 @@ export default function MovieList({
         display: "flex",
         justifyContent: "center",
         gap: "10px",
-        margin: "20px 0"
+        margin: "20px 0",
+
       }}>
         <button
           onClick={showNowPlaying}
           style={activeView === "nowPlaying" ? activeButtonStyle : inactiveButtonStyle}
+          className="nowPlayingToggle"
         >
           Now Playing
         </button>
@@ -45,6 +47,7 @@ export default function MovieList({
           onClick={showSearch}
           style={activeView === "search" ? activeButtonStyle : inactiveButtonStyle}
           disabled={searchResults.length === 0}
+          className="searchToggle"
         >
           Search
         </button>
@@ -63,6 +66,7 @@ export default function MovieList({
         </div>
         {activeView === "nowPlaying" && (
           <button onClick={loadMore}>Load More</button>
+
         )}
       </article>
     </>
