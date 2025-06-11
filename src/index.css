@@ -1,19 +1,17 @@
-body {
+body{
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+
 }
 
-button {
-  background-color: #282c34;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+
+.searchSort{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 20%;
 }
 
-button:hover {
-  background-color: #777;
-  color: white;
+
+.cardContainer{
+  display: flex;
+  flex-wrap: wrap;
 }
