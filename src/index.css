@@ -1,73 +1,163 @@
-body{
+body {
   margin: 0;
-
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-
-.searchSort{
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 5%;
+/* Apply box-sizing to all elements */
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-
-.cardContainer{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0% 5% 0 0;
-  justify-content: center;
-}
-
-.movieCard{
-  margin: 5px;
-  width: 300px;
-  height: auto;
-  margin: 20px;
-}
-
-
-/* On screens that are 992px wide or less, go from four columns to two columns */
-@media screen and (max-width: 992px) {
-  .movieCard {
-    flex: 50%;
-  }
-}
-
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .cardContainer {
-    flex-direction: column;
-  }
-}
-
-.headerContainer{
+/* Header Styles */
+.headerContainer {
   background-color: rgb(21, 19, 19);
   color: rgb(200, 39, 39);
   padding: 10px;
+  width: 100%;
+  position: relative;
 }
 
+/* Search and Sort Controls */
+.searchSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 5%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-.searchBox{
+.searchBox {
   padding: 10px 5px;
   width: 200px;
   border: none;
   border-radius: 5px;
+  max-width: 100%;
 }
 
-.searchButton{
+.searchButton {
   padding: 10px 5px;
   margin-left: 5px;
   width: 100px;
-  background-color: rgb(200, 39, 39);;
+  background-color: rgb(200, 39, 39);
   color: white;
   border: none;
   border-radius: 5px;
 }
 
-.sort{
+.clearButton {
+  padding: 10px 5px;
+  margin-left: 5px;
+  width: 100px;
+  background-color: rgb(200, 39, 39);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.sort {
   padding: 10px 5px;
   width: 100px;
   border-radius: 5px;
+}
+
+/* Movie Card Container */
+.cardContainer {
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Movie Card Styles */
+.movieCard {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  overflow: hidden;
+  margin: 10px;
+
+}
+
+.movieCard:hover {
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.movieImage {
+  width: 100%;
+  display: block;
+}
+
+.movieCardContainer {
+  max-width: 100%;
+}
+
+/* Additional Responsive Styles */
+/* @media screen and (max-width: 768px) {
+  .searchSort {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .searchSort > div {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .searchBox {
+    width: calc(100% - 110px);
+  }
+
+  .searchButton {
+    width: 100px;
+  }
+
+  .sort {
+    width: 100%;
+  }
+
+  .movieCard {
+    width: calc(50% - 20px);
+    margin: 5px;
+  }
+} */
+
+@media screen and (max-width: 480px) {
+  .movieCard {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+  }
+
+  .headerContainer h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .view-toggle {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .view-toggle button {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .searchToggle, .nowPlayingToggle {
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+  }
 }
 
 .searchToggle{
@@ -82,4 +172,110 @@ body{
   width: 150px;
   border: none;
   border-radius: 5px;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background-color: rgb(21, 19, 19);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: rgb(200, 39, 39);
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.modal-poster {
+  flex: 0 0 300px;
+}
+
+.modal-poster img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-details {
+  flex: 1;
+  min-width: 300px;
+}
+
+.modal-details p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Modal Responsive Styles */
+@media screen and (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .modal-poster {
+    margin: 0 auto;
+  }
+}
+
+.footer {
+  background-color: rgb(21, 19, 19);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  width: 100%;
+  position: relative;
+}
+
+
+.loadMoreButton{
+  padding: 5px 20px;
+  margin: 5% 0;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import MovieList from './components/MovieList'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -50,6 +51,10 @@ const App = () => {
     fetchMovies();
   }, [page]);
 
+
+
+
+
   // Function to search movies from API
   const searchMoviesFromAPI = async () => {
     if (!searchQuery.trim()) return;
@@ -93,6 +98,9 @@ const App = () => {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           searchMoviesFromAPI={searchMoviesFromAPI}
+          setActiveView={setActiveView}
+          movies={movies}
+          setMovies={setMovies}
         />
       </header>
       <main>
@@ -105,6 +113,7 @@ const App = () => {
           showSearch={showSearch}
         />
       </main>
+<Footer />
     </div>
   )
 }
