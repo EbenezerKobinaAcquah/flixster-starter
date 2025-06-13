@@ -102,7 +102,7 @@ body {
 
 .movieCardContainer {
   width: 300px;
-  height: 450px;
+  height: 100%;
   flex-shrink: 0;
 }
 

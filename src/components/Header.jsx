@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Header({
-  movies,
+  displayedMovies,
   setMovies,
   handleSort,
   setSearchQuery,
@@ -30,18 +30,21 @@ export default function Header({
   }
 
   function methodOfSort(event) {
-    let sortedMovies = [...movies];
+    let sortedMovies = [...displayedMovies];
     if (event.target.value === "Name") {
       sortedMovies.sort((a, b) =>
         a.original_title.localeCompare(b.original_title)
       );
       setMovies(sortedMovies);
+      setSort(event.target.value);
     } else if (event.target.value === "Vote") {
       sortedMovies.sort((a, b) => b.vote_average - a.vote_average);
       setMovies(sortedMovies);
+      setSort(event.target.value);
     } else {
       sortedMovies.sort((a, b) => b.release_date.localeCompare(a.release_date));
       setMovies(sortedMovies);
+      setSort(event.target.value);
     }
   }
 

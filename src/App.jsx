@@ -141,7 +141,7 @@ const App = () => {
           setSearchQuery={setSearchQuery}
           searchMoviesFromAPI={searchMoviesFromAPI}
           setActiveView={setActiveView}
-          displayedMovies={movies}
+          displayedMovies={displayedMovies}
           setMovies={setMovies}
         />
       </header>
