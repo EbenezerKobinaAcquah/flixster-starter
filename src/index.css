@@ -2,11 +2,12 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
-
 }
 
 /* Apply box-sizing to all elements */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -79,7 +80,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   overflow: hidden;
   display: flex;
@@ -87,7 +88,7 @@ body {
 }
 
 .movieCard:hover {
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transform: scale(1.03);
 }
@@ -122,41 +123,11 @@ body {
   color: #666;
 }
 
-/* Additional Responsive Styles */
-/* @media screen and (max-width: 768px) {
-  .searchSort {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .searchSort > div {
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
-  .searchBox {
-    width: calc(100% - 110px);
-  }
-
-  .searchButton {
-    width: 100px;
-  }
-
-  .sort {
-    width: 100%;
-  }
-
-  .movieCard {
-    width: calc(50% - 20px);
-    margin: 5px;
-  }
-} */
-
-@media screen and (max-width: 600px){
-  .movieTitle{
+@media screen and (max-width: 600px) {
+  .movieTitle {
     font-size: 1rem;
   }
-  .movieRating{
+  .movieRating {
     font-size: 0.8rem;
   }
 }
@@ -184,21 +155,22 @@ body {
     margin: 0 auto;
   }
 
-  .searchToggle, .nowPlayingToggle {
+  .searchToggle,
+  .nowPlayingToggle {
     width: 100%;
     max-width: 200px;
     margin: 5px auto;
   }
 }
 
-.searchToggle{
+.searchToggle {
   padding: 10px 5px;
   width: 100px;
   border: none;
   border-radius: 5px;
 }
 
-.nowPlayingToggle{
+.nowPlayingToggle {
   padding: 10px 5px;
   width: 150px;
   border: none;
@@ -302,8 +274,7 @@ body {
   position: relative;
 }
 
-
-.loadMoreButton{
+.loadMoreButton {
   padding: 5px 20px;
   margin: 5% 0;
   background-color: black;
@@ -312,31 +283,30 @@ body {
   cursor: pointer;
 }
 
-.trailer{
+.trailer {
   margin: auto;
 }
 
-.watchButton{
+.watchButton {
   padding: 0px 5%;
   margin: 5% 5%;
-  background-color:  rgb(200, 39, 39);
+  background-color: rgb(200, 39, 39);
   color: white;
   border: #333;
   border-radius: 5px;
 }
 
-.notWatchedButton{
+.notWatchedButton {
   padding: 0px 5%;
   margin: 5% 5%;
   background-color: white;
-  color:  rgb(200, 39, 39);
+  color: rgb(200, 39, 39);
   border: 1px solid red;
   border-radius: 5px;
 }
-.likeAndWatchButton{
+.likeAndWatchButton {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-
 }

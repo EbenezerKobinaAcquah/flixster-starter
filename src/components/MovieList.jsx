@@ -1,8 +1,6 @@
-
 import { useState } from "react";
 import MovieCard from "./MovieCard";
 import Modal from "./Modal";
-
 
 export default function MovieList({
   searchResults,
@@ -17,7 +15,7 @@ export default function MovieList({
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const loadMore = () => {
-    setPage(prev => prev + 1);
+    setPage((prev) => prev + 1);
   };
 
   function handleMovieClick(movie) {
@@ -32,35 +30,29 @@ export default function MovieList({
     <>
       <article>
         <div className="cardContainer">
-          {(activeView === "search" ? searchResults : displayedMovies).map((movie) => (
-            <MovieCard
-              key={movie.id}
-              vote={movie.vote_average}
-              title={movie.original_title}
-              poster={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-              movieData={movie}
-              onClick={handleMovieClick}
-              isWatched={watchedMovies.has(movie.id)}
-              onWatchToggle={(event) => handleWatchToggle(movie.id, event)}
-              isLiked={likedMovies.has(movie.id)}
-              onLikeToggle={(event) => handleLikeToggle(movie.id, event)}
-
-            />
-
-          ))}
-
+          {(activeView === "search" ? searchResults : displayedMovies).map(
+            (movie) => (
+              <MovieCard
+                key={movie.id}
+                vote={movie.vote_average}
+                title={movie.original_title}
+                poster={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                movieData={movie}
+                onClick={handleMovieClick}
+                isWatched={watchedMovies.has(movie.id)}
+                onWatchToggle={(event) => handleWatchToggle(movie.id, event)}
+                isLiked={likedMovies.has(movie.id)}
+                onLikeToggle={(event) => handleLikeToggle(movie.id, event)}
+              />
+            )
+          )}
         </div>
-
-
-
       </article>
-      <button onClick={loadMore} className="loadMoreButton">Load More</button>
+      <button onClick={loadMore} className="loadMoreButton">
+        Load More
+      </button>
 
-      {selectedMovie && (
-        <Modal movie={selectedMovie} onClose={closeModal}  />
-      )}
-
-
+      {selectedMovie && <Modal movie={selectedMovie} onClose={closeModal} />}
     </>
   );
 }

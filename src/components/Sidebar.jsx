@@ -12,7 +12,7 @@ const Sidebar = ({ isOpen, toggleSidebar, setActiveTab }) => {
         <div className="sidebar-content">
           <button onClick={() => setActiveTab("home")}>Home</button>
           <button onClick={() => setActiveTab("watched")}>Watched</button>
-          <button onClick={() => setActiveTab("liked")}>Liked</button>
+          <button onClick={() => setActiveTab("liked")}>Favorites</button>
         </div>
       )}
     </div>

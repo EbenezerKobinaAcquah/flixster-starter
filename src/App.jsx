@@ -1,47 +1,37 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import MovieList from './components/MovieList'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Sidebar from './components/Sidebar'
+import { useState, useEffect } from "react";
+import "./App.css";
+import MovieList from "./components/MovieList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 
-
+// API Key and Bearer Token
 const apiKey = import.meta.env.VITE_API_KEY;
 const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
-
 const App = () => {
-
+  // States
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [activeView, setActiveView] = useState("nowPlaying"); // "nowPlaying" or "search"
-
+  const [activeView, setActiveView] = useState("nowPlaying");
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [watchedMovies, setWatchedMovies] = useState(new Set());
-const [likedMovies, setLikedMovies] = useState(new Set());
-const [activeTab, setActiveTab] = useState("home");
-const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [likedMovies, setLikedMovies] = useState(new Set());
+  const [activeTab, setActiveTab] = useState("home");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-
-
-
-
+  // API URLs
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`;
   const url_search = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
 
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${bearerToken}`
-    }
+      accept: "application/json",
+      Authorization: `Bearer ${bearerToken}`,
+    },
   };
-
-
-
 
   // Fetch initial movies on load and when page changes
   useEffect(() => {
@@ -50,24 +40,20 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
         const response = await fetch(url, options);
 
         if (!response.ok) {
-          throw new Error('Error fetching data');
+          throw new Error("Error fetching data");
         }
 
         const data = await response.json();
         console.log(data);
 
-        setMovies(prev => [...prev, ...data.results]);
+        setMovies((prev) => [...prev, ...data.results]);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     fetchMovies();
   }, [page]);
-
-
-
-
 
   // Function to search movies from API
   const searchMoviesFromAPI = async () => {
@@ -77,14 +63,14 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
       const response = await fetch(url_search, options);
 
       if (!response.ok) {
-        throw new Error('Error fetching search results');
+        throw new Error("Error fetching search results");
       }
 
       const data = await response.json();
       console.log("Search results:", data);
 
       setSearchResults(data.results);
-      setActiveView("search"); // Switch to search view when search is performed
+      setActiveView("search");
     } catch (error) {
       console.log(error);
     }
@@ -102,11 +88,10 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     }
   };
 
-
+  // Function to handle watched and unwatched toggles
   const handleWatchToggle = (movieId, event) => {
     event.stopPropagation();
-
-    setWatchedMovies(prev => {
+    setWatchedMovies((prev) => {
       const newWatchedMovies = new Set(prev);
       if (newWatchedMovies.has(movieId)) {
         newWatchedMovies.delete(movieId);
@@ -115,12 +100,12 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
       }
       return newWatchedMovies;
     });
-  }
+  };
 
+  // Function to handle liked and unliked toggles
   const handleLikeToggle = (movieId, event) => {
     event.stopPropagation();
-
-    setLikedMovies(prev => {
+    setLikedMovies((prev) => {
       const newLikedMovies = new Set(prev);
       if (newLikedMovies.has(movieId)) {
         newLikedMovies.delete(movieId);
@@ -129,21 +114,23 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
       }
       return newLikedMovies;
     });
-  }
+  };
 
+  // Filter movies based on active tab
   let displayedMovies = movies;
-
-if (activeTab === "watched") {
-  displayedMovies = movies.filter(movie => watchedMovies.has(movie.id));
-} else if (activeTab === "liked") {
-  displayedMovies = movies.filter(movie => likedMovies.has(movie.id));
-}else{
-  displayedMovies = movies;
-}
+  if (activeTab === "watched") {
+    displayedMovies = movies.filter((movie) => watchedMovies.has(movie.id));
+  } else if (activeTab === "liked") {
+    displayedMovies = movies.filter((movie) => likedMovies.has(movie.id));
+  } else {
+    displayedMovies = movies;
+  }
+  // Toggle sidebar
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <div className="App">
-<Sidebar
+      <Sidebar
         isOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
         setActiveTab={setActiveTab}
@@ -159,7 +146,6 @@ if (activeTab === "watched") {
         />
       </header>
       <main>
-
         <MovieList
           searchResults={searchResults}
           displayedMovies={displayedMovies}
@@ -173,9 +159,9 @@ if (activeTab === "watched") {
           handleLikeToggle={handleLikeToggle}
         />
       </main>
-<Footer />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
