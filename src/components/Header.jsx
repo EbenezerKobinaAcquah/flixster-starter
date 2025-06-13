@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 export default function Header({ movies, setMovies, handleSort, setSearchQuery, searchQuery, searchMoviesFromAPI, setActiveView }) {
+    
     const [sort, setSort] = useState('name');
+
     function handleSearchChange(e) {
         setSearchQuery(e.target.value);
     }
@@ -20,7 +22,7 @@ function handleEnterKey(e) {
         searchMoviesFromAPI();
     }
 }
-let sortByMethod = "original_title.asc"
+
 function methodOfSort(event){
     let sortedMovies = [...movies];
     if(event.target.value === 'Name'){
@@ -30,7 +32,6 @@ function methodOfSort(event){
     else if(event.target.value === 'Vote')
     {
         sortedMovies.sort((a, b) => b.vote_average - a.vote_average);
-        // setSort('Vote')
         setMovies(sortedMovies);
     }
     else{
@@ -38,6 +39,7 @@ function methodOfSort(event){
         setMovies(sortedMovies);
     }
 }
+
     return (
         <>
                     <header className="headerContainer">

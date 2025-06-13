@@ -3,6 +3,7 @@ import './App.css'
 import MovieList from './components/MovieList'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Sidebar from './components/Sidebar'
 
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -19,6 +20,11 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [watchedMovies, setWatchedMovies] = useState(new Set());
 const [likedMovies, setLikedMovies] = useState(new Set());
+const [activeTab, setActiveTab] = useState("home");
+const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
 
 
 
@@ -125,22 +131,38 @@ const [likedMovies, setLikedMovies] = useState(new Set());
     });
   }
 
+  let displayedMovies = movies;
+
+if (activeTab === "watched") {
+  displayedMovies = movies.filter(movie => watchedMovies.has(movie.id));
+} else if (activeTab === "liked") {
+  displayedMovies = movies.filter(movie => likedMovies.has(movie.id));
+}else{
+  displayedMovies = movies;
+}
+
   return (
     <div className="App">
+<Sidebar
+        isOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+        setActiveTab={setActiveTab}
+      />
       <header>
         <Header
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           searchMoviesFromAPI={searchMoviesFromAPI}
           setActiveView={setActiveView}
-          movies={movies}
+          displayedMovies={movies}
           setMovies={setMovies}
         />
       </header>
       <main>
+
         <MovieList
           searchResults={searchResults}
-          movies={movies}
+          displayedMovies={displayedMovies}
           setPage={setPage}
           activeView={activeView}
           showNowPlaying={showNowPlaying}

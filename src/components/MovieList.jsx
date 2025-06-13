@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 export default function MovieList({
   searchResults,
-  movies,
+  displayedMovies,
   setPage,
   activeView,
   watchedMovies,
@@ -32,7 +32,7 @@ export default function MovieList({
     <>
       <article>
         <div className="cardContainer">
-          {(activeView === "search" ? searchResults : movies).map((movie) => (
+          {(activeView === "search" ? searchResults : displayedMovies).map((movie) => (
             <MovieCard
               key={movie.id}
               vote={movie.vote_average}
