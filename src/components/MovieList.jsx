@@ -9,6 +9,10 @@ export default function MovieList({
   movies,
   setPage,
   activeView,
+  watchedMovies,
+  handleWatchToggle,
+  likedMovies,
+  handleLikeToggle,
 }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -36,7 +40,11 @@ export default function MovieList({
               poster={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               movieData={movie}
               onClick={handleMovieClick}
-              
+              isWatched={watchedMovies.has(movie.id)}
+              onWatchToggle={(event) => handleWatchToggle(movie.id, event)}
+              isLiked={likedMovies.has(movie.id)}
+              onLikeToggle={(event) => handleLikeToggle(movie.id, event)}
+
             />
 
           ))}

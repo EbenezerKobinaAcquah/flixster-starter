@@ -1,16 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function LikeButton() {
-  const [liked, setLiked] = useState(false);
+export default function LikeButton({isLiked, onLikeToggle}) {
 
-  const handleClick = (event) => {
-    event.stopPropagation();
-
-    setLiked(!liked);
+  if (isLiked) {
+    return <span className = "likeButton" onClick={onLikeToggle}>❤️</span>;
   }
-  if (liked) {
-    return <span className = "likeButton" onClick={handleClick}>❤️</span>;
-
-  }
-  return <span className = "likeButton" onClick={handleClick}>🤍</span>
+  return <span className = "likeButton" onClick={onLikeToggle}>🤍</span>
 }

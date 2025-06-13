@@ -17,6 +17,10 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [watchedMovies, setWatchedMovies] = useState(new Set());
+const [likedMovies, setLikedMovies] = useState(new Set());
+
+
 
 
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`;
@@ -93,7 +97,33 @@ const App = () => {
   };
 
 
+  const handleWatchToggle = (movieId, event) => {
+    event.stopPropagation();
 
+    setWatchedMovies(prev => {
+      const newWatchedMovies = new Set(prev);
+      if (newWatchedMovies.has(movieId)) {
+        newWatchedMovies.delete(movieId);
+      } else {
+        newWatchedMovies.add(movieId);
+      }
+      return newWatchedMovies;
+    });
+  }
+
+  const handleLikeToggle = (movieId, event) => {
+    event.stopPropagation();
+
+    setLikedMovies(prev => {
+      const newLikedMovies = new Set(prev);
+      if (newLikedMovies.has(movieId)) {
+        newLikedMovies.delete(movieId);
+      } else {
+        newLikedMovies.add(movieId);
+      }
+      return newLikedMovies;
+    });
+  }
 
   return (
     <div className="App">
@@ -115,6 +145,10 @@ const App = () => {
           activeView={activeView}
           showNowPlaying={showNowPlaying}
           showSearch={showSearch}
+          watchedMovies={watchedMovies}
+          handleWatchToggle={handleWatchToggle}
+          likedMovies={likedMovies}
+          handleLikeToggle={handleLikeToggle}
         />
       </main>
 <Footer />

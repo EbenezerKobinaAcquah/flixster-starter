@@ -1,26 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function WatchButton() {
-  const [watched, setWatched] = useState(false);
+export default function WatchButton({isWatched, onWatchToggle}) {
 
-  const handleClick = (event) => {
-    event.stopPropagation();
 
-    setWatched(!watched);
-  }
-  if (watched){
-      return <div className = "watchButton" onClick={handleClick}>
+
+  if (isWatched){
+      return <div className = "watchButton" onClick={onWatchToggle}>
 
 
 
     <p>watched</p>
     </div>
   }
-  return <div className = "notWatchedButton" onClick={handleClick}>
+  return <div className = "notWatchedButton" onClick={onWatchToggle}>
 
 
 
-  <p>!watched</p>
+  <p><b>!</b>watched</p>
   </div>
 
 
