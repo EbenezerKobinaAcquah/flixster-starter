@@ -18,6 +18,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
+
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`;
   const url_search = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
 
@@ -28,6 +29,9 @@ const App = () => {
       Authorization: `Bearer ${bearerToken}`
     }
   };
+
+
+
 
   // Fetch initial movies on load and when page changes
   useEffect(() => {

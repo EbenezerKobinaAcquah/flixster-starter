@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import WatchButton from "./Watched";
 
 export default function Modal({ movie, onClose}) {
     const [modalDetails, setModalDetails] = useState('')
+    const [trailerDetails, setTrailerDetails] = useState('')
+    const [keys, setKeys] = useState('')
   // Close modal when Escape key is pressed
   const apiKey = import.meta.env.VITE_API_KEY;
   const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
   const urlModdal = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}language=en-US`
+   const urlTrailer = `https://api.themoviedb.org/3/movie/${movie.id}/videos`
 
   const options = {
     method: 'GET',
@@ -31,6 +35,18 @@ export default function Modal({ movie, onClose}) {
         onClose();
       }
     };
+const fetchTrailerData = async (movieiId) => {
+  const response = await fetch(urlTrailer, options);
+  const data = await response.json();
+  setTrailerDetails(data)
+  console.log("this is data for my trailer", data)
+  const moviesWithTrailers = data.results.filter(movie => movie.type === 'Trailer');
+  const firstTrailerKey = moviesWithTrailers[0].key
+  setKeys(firstTrailerKey)
+
+
+}
+fetchTrailerData(movie.id);
 
     document.addEventListener("keydown", handleEscKey);
 
@@ -42,6 +58,8 @@ export default function Modal({ movie, onClose}) {
       document.body.style.overflow = "auto";
     };
   }, [onClose]);
+
+
 
   // Handle click outside the modal content to close
   const handleBackdropClick = (e) => {
@@ -60,14 +78,14 @@ export default function Modal({ movie, onClose}) {
         <button className="modal-close" onClick={onClose}>×</button>
 
         <div className="modal-header">
-          <h2>{movie.title || movie.original_title}</h2>
+          <h2>{movie.original_title}</h2>
         </div>
 
         <div className="modal-body">
           <div className="modal-poster">
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              alt={movie.title || movie.original_title}
+              alt={movie.original_title}
             />
           </div>
 
@@ -82,7 +100,14 @@ export default function Modal({ movie, onClose}) {
                 <strong>Genres:</strong> {modalDetails.genres.map(genre => genre.name).join(", ")}
               </p>
             ): <> <strong>Genres:</strong> <p>Genres:</p></>}
+             {/* <video controls>
+              <source src={} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video> */}
           </div>
+          <div className="trailer">
+          <iframe  width="560" height="315" src={`https://www.youtube.com/embed/${keys}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
         </div>
       </div>
     </div>

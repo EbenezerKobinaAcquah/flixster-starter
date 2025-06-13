@@ -8,7 +8,7 @@ export default function MovieList({
   searchResults,
   movies,
   setPage,
-  activeView
+  activeView,
 }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -36,16 +36,20 @@ export default function MovieList({
               poster={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               movieData={movie}
               onClick={handleMovieClick}
+              
             />
+
           ))}
+
         </div>
-        {activeView === "nowPlaying" && (
-          <button onClick={loadMore} className="loadMoreButton">Load More</button>
-        )}
+
+
+
       </article>
+      <button onClick={loadMore} className="loadMoreButton">Load More</button>
 
       {selectedMovie && (
-        <Modal movie={selectedMovie} onClose={closeModal} />
+        <Modal movie={selectedMovie} onClose={closeModal}  />
       )}
 
 
