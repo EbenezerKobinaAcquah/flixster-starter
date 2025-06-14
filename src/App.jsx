@@ -4,6 +4,7 @@ import MovieList from "./components/MovieList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import "./components/Sidebar.css"
 
 // API Key and Bearer Token
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -130,11 +131,14 @@ const App = () => {
 
   return (
     <div className="App">
+      <div>
       <Sidebar
         isOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
         setActiveTab={setActiveTab}
       />
+      </div>
+      <div className="mainBody">
       <header>
         <Header
           searchQuery={searchQuery}
@@ -160,6 +164,7 @@ const App = () => {
         />
       </main>
       <Footer />
+      </div>
     </div>
   );
 };

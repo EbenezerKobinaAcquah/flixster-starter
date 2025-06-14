@@ -28,6 +28,7 @@ export default function MovieList({
 
   return (
     <>
+    {displayedMovies.length > 0 ? (
       <article>
         <div className="cardContainer">
           {(activeView === "search" ? searchResults : displayedMovies).map(
@@ -48,6 +49,8 @@ export default function MovieList({
           )}
         </div>
       </article>
+    ) : <h2>No movies found</h2>}
+
       <button onClick={loadMore} className="loadMoreButton">
         Load More
       </button>

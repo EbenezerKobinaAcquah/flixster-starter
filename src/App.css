@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+@media screen and (max-width: 600px) {
+.App{
+  display: flex;
+}
+}
+
 .App-header {
   background-color: #282c34;
   display: flex;

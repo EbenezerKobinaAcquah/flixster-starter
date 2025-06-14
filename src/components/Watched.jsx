@@ -11,7 +11,7 @@ export default function WatchButton({ isWatched, onWatchToggle }) {
   return (
     <div className="notWatchedButton" onClick={onWatchToggle}>
       <p>
-        <b>!</b>watched
+        Not watched
       </p>
     </div>
   );

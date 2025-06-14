@@ -1,5 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
+import "../App.css"
 
 const Sidebar = ({ isOpen, toggleSidebar, setActiveTab }) => {
   return (
