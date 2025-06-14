@@ -108,15 +108,15 @@ https://www.loom.com/share/50e2da4f00774e9cad933c8cd98c352f?sid=6ec0cecf-aed5-45
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+React hooks for sure
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+Maybe a link to the movie itself?
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+My demo presentation didn't go as planned. I had changed a variable in a file in my code and didn't change it everywhere else.
 
 ### Open-source libraries used
 
@@ -125,3 +125,5 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+Shout out to TF Elikem for the good explanation of state lifting
