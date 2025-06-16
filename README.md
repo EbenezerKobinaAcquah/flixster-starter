@@ -2,6 +2,8 @@
 
 Submitted by: **Ebenezer Kobina Acquah**
 
+**App Summary:** Flixster is a responsive React movie discovery application that displays current movies from The Movie Database API with search, sorting, and filtering capabilities. Users can mark movies as watched or favorited, view detailed information in modal pop-ups, and navigate between different movie collections using an intuitive sidebar interface. The app features a clean, accessible design with embedded movie trailers and comprehensive movie management functionality.
+
 Estimated time spent: **20** hours spent in total
 
 Deployed Application (**required**): https://flixster-starter-7yhp.onrender.com/
