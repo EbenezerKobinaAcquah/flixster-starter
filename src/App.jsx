@@ -45,7 +45,6 @@ const App = () => {
         }
 
         const data = await response.json();
-        console.log(data);
 
         setMovies((prev) => [...prev, ...data.results]);
       } catch (error) {
@@ -68,7 +67,6 @@ const App = () => {
       }
 
       const data = await response.json();
-      console.log("Search results:", data);
 
       setSearchResults(data.results);
       setActiveView("search");
