@@ -1,0 +1,13 @@
+/* Movie List Styles */
+.loadMoreButton {
+  padding: 5px 20px;
+  margin: 5% 0;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.noMovies {
+  height: 100%;
+}

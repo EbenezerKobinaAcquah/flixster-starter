@@ -1,0 +1,18 @@
+/* Watch Button Styles */
+.watchButton {
+  padding: 0px 5%;
+  margin: 5% 5%;
+  background-color: rgb(200, 39, 39);
+  color: white;
+  border: #333;
+  border-radius: 5px;
+}
+
+.notWatchedButton {
+  padding: 0px 5%;
+  margin: 5% 5%;
+  background-color: white;
+  color: rgb(200, 39, 39);
+  border: 1px solid red;
+  border-radius: 5px;
+}

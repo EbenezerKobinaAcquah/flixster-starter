@@ -1,4 +1,5 @@
 import React from "react";
+import "./WatchButton.css";
 
 export default function WatchButton({ isWatched, onWatchToggle }) {
   if (isWatched) {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MovieCard from "./MovieCard";
 import Modal from "./Modal";
+import "./MovieList.css";
 
 export default function MovieList({
   searchResults,

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Header.css";
 
 export default function Header({
   displayedMovies,
@@ -18,7 +19,7 @@ export default function Header({
   function handleSearchButton() {
     searchMoviesFromAPI();
   }
-  function handleclearButton() {
+  function handleClearButton() {
     setSearchQuery("");
     setActiveView("nowPlaying");
   }
@@ -67,7 +68,7 @@ export default function Header({
             <button className="searchButton" onClick={handleSearchButton}>
               Search
             </button>
-            <button className="clearButton" onClick={handleclearButton}>
+            <button className="clearButton" onClick={handleClearButton}>
               Clear
             </button>
           </div>

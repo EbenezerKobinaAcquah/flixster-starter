@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import WatchButton from "./Watched";
+import "./Modal.css";
 
 export default function Modal({ movie, onClose }) {
   const [modalDetails, setModalDetails] = useState("");
@@ -9,7 +10,7 @@ export default function Modal({ movie, onClose }) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
-  const urlModdal = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}language=en-US`;
+  const urlModal = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}language=en-US`;
   const urlTrailer = `https://api.themoviedb.org/3/movie/${movie.id}/videos`;
 
   const options = {
@@ -22,7 +23,7 @@ export default function Modal({ movie, onClose }) {
 
   useEffect(() => {
     const fetchModalData = async () => {
-      const response = await fetch(urlModdal, options);
+      const response = await fetch(urlModal, options);
       const data = await response.json();
       setModalDetails(data);
     };
@@ -34,7 +35,7 @@ export default function Modal({ movie, onClose }) {
         onClose();
       }
     };
-    const fetchTrailerData = async (movieiId) => {
+    const fetchTrailerData = async (movieId) => {
       const response = await fetch(urlTrailer, options);
       const data = await response.json();
       setTrailerDetails(data);
@@ -68,25 +69,23 @@ export default function Modal({ movie, onClose }) {
   if (!movie) return null;
 
   return (
-    <div className="modal-backdrop" onClick={handleBackdropClick}>
-      <div className="modal-content">
-        <button className="modal-close" onClick={onClose}>
-          ×
-        </button>
+    <div className="modalBackdrop" onClick={handleBackdropClick}>
+      <div className="modalContent">
+        <button className="modalClose" onClick={onClose}>×</button>
 
-        <div className="modal-header">
+        <div className="modalHeader">
           <h2>{movie.original_title}</h2>
         </div>
 
-        <div className="modal-body">
-          <div className="modal-poster">
+        <div className="modalBody">
+          <div className="modalPoster">
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
               alt={movie.original_title}
             />
           </div>
 
-          <div className="modal-details">
+          <div className="modalDetails">
             <p>
               <strong>Rating:</strong> {movie.vote_average} ({movie.vote_count}{" "}
               votes)

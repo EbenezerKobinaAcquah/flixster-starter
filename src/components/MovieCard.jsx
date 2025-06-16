@@ -1,5 +1,6 @@
 import LikeButton from "./LikeButton";
 import WatchButton from "./Watched";
+import "./MovieCard.css";
 
 export default function MovieCard({
   poster,

@@ -1,0 +1,92 @@
+/* Header Styles */
+.headerContainer {
+  background-color: rgb(21, 19, 19);
+  color: rgb(200, 39, 39);
+  padding: 10px;
+  width: 100%;
+  position: relative;
+}
+
+/* Search and Sort Controls */
+.searchSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 5%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.searchBox {
+  padding: 10px 5px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.searchButton {
+  padding: 10px 5px;
+  margin-left: 5px;
+  width: 100px;
+  background-color: rgb(200, 39, 39);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.clearButton {
+  padding: 10px 5px;
+  margin-left: 5px;
+  width: 100px;
+  background-color: rgb(200, 39, 39);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.sort {
+  padding: 10px 5px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.searchToggle {
+  padding: 10px 5px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+}
+
+.nowPlayingToggle {
+  padding: 10px 5px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Header Responsive Styles */
+@media screen and (max-width: 480px) {
+  .headerContainer h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .view-toggle {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .view-toggle button {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .searchToggle,
+  .nowPlayingToggle {
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+  }
+}
